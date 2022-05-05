@@ -30,19 +30,18 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{$model->username}}</td>
-                                    <td>{{$model->email}}</td>
-                                    <td>{{$model->phone}}</td>
+                                    <td>{{$user->username}}</td>
+                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->phone}}</td>
                                     <td>
-                                        @if($model->gender == 1)
+                                        @if($user->gender == 1)
                                             Nam
                                         @else
                                             Nữ
                                         @endif
                                     </td>
-                                    <td>{{$model->address}}</td>
+                                    <td>{{$user->address}}</td>
                                 </tr>
-                               
                             </tbody>
                         </table>
                     </div>    

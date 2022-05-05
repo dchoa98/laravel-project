@@ -21,7 +21,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="key">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -36,7 +36,7 @@
                     </th>
                 </thead>
                 <tbody>
-                    @foreach($model as $user)
+                    @foreach($users as $user)
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->email}}</td>
@@ -53,7 +53,7 @@
                 </tbody>
             </table>
             <nav aria-label="Page navigation example">
-                {{$model->links()}}
+                {{$users->links()}}
             </nav>
             </div>
         </div>

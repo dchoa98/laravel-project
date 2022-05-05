@@ -20,8 +20,8 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <form class="d-flex" action="{{route('search')}}">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                    <form class="d-flex" action="#">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="key">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
@@ -31,12 +31,12 @@
                 <thead>
                     <th>STT</th>
                     <th>Email</th>
-                    <th>
+                    <th class="d-flex justify-content-end">
                         <a href="{{route('users.add')}}" class="btn btn-secondary">Create</a>
                     </th>
                 </thead>
                 <tbody>
-                    @foreach($model as $user)
+                    @foreach($users as $user)
                     <tr>
                         <td>{{$user->id}}</td>
                         <td>{{$user->email}}</td>
@@ -53,7 +53,7 @@
                 </tbody>
             </table>
             <nav aria-label="Page navigation example">
-                {{$model->links()}}
+                
             </nav>
             </div>
         </div>

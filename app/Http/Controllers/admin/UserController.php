@@ -8,74 +8,79 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index(UserRequest $request)
+    public function index()
     {
-        $model = User::all();
+        $users = User::all();
 
-        return view('list', compact('model')); 
+        return view('list', compact('users')); 
     }
 
     public function addUser()
     {
+
         return view('create');
     }
 
     public function createUser(UserRequest $request)
     {
-        $model = new User();
+        $users = new User();
 
-        $model->fill($request->all());
-        $model->save();
+        $users->fill($request->all());
+        $users->save();
 
         return redirect('/');
     }
 
     public function editUser($id)
     {
-        $model = User::find($id);
+        $users = User::find($id);
 
-        if (!$model) 
+        if (!$users) 
         {
-            return redirect()->back();
+            return redirect('')->with(['message' => 'User không tồn tại']);
         }
-        return view('edit', compact('model'));
+
+        return view('edit', compact('users'));
     }
 
     public function detailUser($id)
     {
-        $model = User::find($id);
+        $user = User::find($id);
 
-        if (!$model) 
+        if (!$user) 
         {
-            return redirect()->back();
+            return redirect('/')->with(['message' => 'User không tồn tại']);
         }
-        return view('detail', compact('model'));
+
+        return view('detail', compact('user'));
     }
 
     public function updateUser($id, UserRequest $request)
     {
-        $model = User::find($id);
+        $users = User::find($id);
 
-        $model->fill($request->all());
-        $model->save();
+        if (!$user) 
+        {
+            return redirect('')->with(['message' => 'User không tồn tại']);
+        }
+
+        $users->fill($request->all());
+        $users->save();
 
         return redirect('/');
     }
 
     public function deleteUser($id)
     {
+        $users = User::find($id);
+
+        if (!$user) 
+        {
+            return redirect('/')->with(['message' => 'User không tồn tại']);
+        }
+
         User::destroy($id);
+
         return redirect('/')->with(['message' => 'Delete Success']);
-    }
-    
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
-        $list = User::where('name', 'like', "%$query%")
-            ->orWhere('email', 'like', "%$query%")
-            ->orWhere('id', 'like', "%$query%")
-            ->orderBy('id', 'desc')
-            ->paginate(10);
-        return view('user.search', compact('list'));
     }
 }

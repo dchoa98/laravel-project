@@ -20,13 +20,13 @@
             <div class="card">
                 <div class="card-header">Edit User</div>
                 <div class="card-body">
-            <form action="{{route('users.update',['id'=>$model->id])}}" method="POST" enctype="multipart/form-data" class="p-3">
+            <form action="{{route('users.update',['id'=>$users->id])}}" method="POST" enctype="multipart/form-data" class="p-3">
                 @method('PUT')
                 @csrf
                 <div class="form-group row bottom-fix ">
                             <label for="username" class="col-md-3 col-form-label text-md-right">Username</label>
                             <div class="col-md-8">
-                                <input type="text" id="username" class="form-control" name="username" value="{{$model->username}}">
+                                <input type="text" id="username" class="form-control" name="username" value="{{$users->username}}">
                                 @error('username')
                                 <span class="form-error">{{$message}}</span>
                                 @enderror
@@ -35,7 +35,7 @@
                         <div class="form-group row bottom-fix ">
                             <label for="email" class="col-md-3 col-form-label text-md-right">Email</label>
                             <div class="col-md-8">
-                                <input type="text" id="email" class="form-control" name="email" value="{{$model->email}}">
+                                <input type="text" id="email" class="form-control" name="email" value="{{$users->email}}">
                                 @error('email')
                                 <span class="form-error">{{$message}}</span>
                                 @enderror
@@ -44,7 +44,7 @@
                         <div class="form-group row bottom-fix ">
                             <label for="phone" class="col-md-3 col-form-label text-md-right">Phone</label>
                             <div class="col-md-8">
-                                <input type="text" id="phone" class="form-control" name="phone" value="{{$model->phone}}">
+                                <input type="text" id="phone" class="form-control" name="phone" value="{{$users->phone}}">
                                 @error('phone')
                                 <span class="form-error">{{$message}}</span>
                                 @enderror
@@ -54,8 +54,8 @@
                             <label for="gender" class="col-md-3 col-form-label text-md-right">Gender</label>
                             <div class="col-md-8">
                             <select name="gender" class="form-select">
-                                <option <?= ($model->gender == "1") ? "selected" : "" ?> value="1">Male</option>
-                                <option <?= ($model->gender == "2") ? "selected" : "" ?> value="2">Female</option>
+                                <option <?= ($users->gender == "1") ? "selected" : "" ?> value="1">Male</option>
+                                <option <?= ($users->gender == "2") ? "selected" : "" ?> value="2">Female</option>
                             </select>
                                 @error('gender')
                                 <span class="text-danger">{{$message}}</span>
@@ -65,7 +65,7 @@
                         <div class="form-group row bottom-fix ">
                             <label for="address" class="col-md-3 col-form-label text-md-right">Address</label>
                             <div class="col-md-8">
-                                <input type="text" id="address" class="form-control" name="address" value="{{$model->address}}">
+                                <input type="text" id="address" class="form-control" name="address" value="{{$users->address}}">
                                 @error('address')
                                 <span class="form-error">{{$message}}</span>
                                 @enderror

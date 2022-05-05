@@ -29,4 +29,4 @@ Route::put('users/update-user/{id}',[UserController::class,'updateUser'])->name(
 
 Route::post('users/delete-user/{id}',[UserController::class,'deleteUser'])->name('users.delete');
 
-Route::get('users/search/',[UserController::class,'search'])->name('search');
+Route::get('users/search/',[UserController::class,'search'])->name('users.search');
