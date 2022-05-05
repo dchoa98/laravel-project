@@ -38,7 +38,6 @@ class UserRequest extends FormRequest
             ],
             'gender' => 'required|numeric',
             'address'=>'required',
-            'query' => 'required',
         ];
     }
 
@@ -56,7 +55,6 @@ class UserRequest extends FormRequest
             'gender.required' => 'Giới tính không được để trống',
             'gender.numeric' => 'Kiểu dữ liệu của giới tính được lưu là số',
             'address.required' => 'Địa chỉ không được để trống',
-            'query.required' => 'Tìm kiếm cái gì',  
         ];
     }
 }

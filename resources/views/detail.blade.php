@@ -23,6 +23,7 @@
                         <table class="table table-bordered mt-2">
                             <thead>
                                 <th>ID</th>
+                                <th>Username</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
@@ -30,17 +31,18 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>{{$user->username}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->phone}}</td>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
                                     <td>
-                                        @if($user->gender == 1)
+                                        @if( $user->gender == 1)
                                             Nam
                                         @else
                                             Nữ
                                         @endif
                                     </td>
-                                    <td>{{$user->address}}</td>
+                                    <td>{{ $user->address }}</td>
                                 </tr>
                             </tbody>
                         </table>

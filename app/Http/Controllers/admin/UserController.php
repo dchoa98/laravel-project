@@ -10,9 +10,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(5);
 
-        return view('list', compact('users')); 
+        return view('list', compact('users'));
     }
 
     public function addUser()
@@ -33,51 +33,31 @@ class UserController extends Controller
 
     public function editUser($id)
     {
-        $users = User::find($id);
-
-        if (!$users) 
-        {
-            return redirect('')->with(['message' => 'User không tồn tại']);
-        }
+        $users = User::findOrFail($id);
 
         return view('edit', compact('users'));
     }
 
     public function detailUser($id)
     {
-        $user = User::find($id);
-
-        if (!$user) 
-        {
-            return redirect('/')->with(['message' => 'User không tồn tại']);
-        }
+        $user = User::findOrFail($id);
 
         return view('detail', compact('user'));
     }
 
     public function updateUser($id, UserRequest $request)
     {
-        $users = User::find($id);
-
-        if (!$user) 
-        {
-            return redirect('')->with(['message' => 'User không tồn tại']);
-        }
+        $users = User::findOrFail($id);
 
         $users->fill($request->all());
         $users->save();
 
-        return redirect('/');
+        return redirect('/')->with(['message' => 'Update Success']);
     }
 
     public function deleteUser($id)
     {
-        $users = User::find($id);
-
-        if (!$user) 
-        {
-            return redirect('/')->with(['message' => 'User không tồn tại']);
-        }
+        $users = User::findOrFail($id);
 
         User::destroy($id);
 

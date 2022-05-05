@@ -32,28 +32,30 @@
                     <th>STT</th>
                     <th>Email</th>
                     <th class="d-flex justify-content-end">
-                        <a href="{{route('users.add')}}" class="btn btn-secondary">Create</a>
+                        <a href="{{ route('users.add') }}" class="btn btn-secondary">Create</a>
                     </th>
                 </thead>
                 <tbody>
+                    <?php $i =1 ;?>
                     @foreach($users as $user)
                     <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->email}}</td>
+                        <td>{{ $i }}</td>
+                        <td>{{ $user->email }}</td>
                         <td class="d-flex justify-content-around">
-                            <a href="{{route('users.detail',['id'=>$user->id])}}" class="btn btn-success"><i class="fa fa-edit"></i> Detail</a>
-                            <a href="{{route('users.edit',['id'=>$user->id])}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                            <form action="{{route('users.delete', ['id'=>$user->id])}}" method="POST">
+                            <a href="{{ route('users.detail',['id'=>$user->id]) }}" class="btn btn-success"><i class="fa fa-edit"></i> Detail</a>
+                            <a href="{{ route('users.edit',['id'=>$user->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                            <form action="{{ route('users.delete', ['id'=>$user->id]) }}" method="POST">
                                 @csrf
                                 <button class="btn btn-dark" type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa ?')" ><i class="fa fa-times"></i>  Delete</button>
                             </form>
                         </td>
                     </tr>
+                    <?php $i++ ;?>
                     @endforeach
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                
+            <nav aria-label="Page navigation example" class="float-end">
+                {{ $users->links() }}
             </nav>
             </div>
         </div>

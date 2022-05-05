@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [UserController::class,'index'])->name('users.index');
+Route::get('', [UserController::class,'index'])->name('users.index');
 
 Route::get('users/edit-user/{id}',[UserController::class,'editUser'])->name('users.edit');
 

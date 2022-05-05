@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand" href="{{route('users.index')}}"><h5>USER</h5></a>
+        <a class="navbar-brand" href="{{ route('users.index') }}"><h5>USER</h5></a>
     </div>
 </nav>
 <div class="cotainer form-fix">
@@ -20,32 +20,32 @@
             <div class="card">
                 <div class="card-header">Add User</div>
                 <div class="card-body">
-                    <form action="{{route('users.create')}}" method="POST" enctype="multipart/form-data" class="p-3">
+                    <form action="{{ route('users.create') }}" method="POST" enctype="multipart/form-data" class="p-3">
                     @csrf
                         <div class="form-group row bottom-fix ">
                             <label for="username" class="col-md-3 col-form-label text-md-right">Username</label>
                             <div class="col-md-8">
-                                <input type="text" id="username" class="form-control" name="username">
+                                <input type="text" id="username" class="form-control" name="username" value="{{ old('username') }}">
                                 @error('username')
-                                <span class="form-error">{{$message}}</span>
+                                <span class="form-error">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row bottom-fix ">
                             <label for="email" class="col-md-3 col-form-label text-md-right">Email</label>
                             <div class="col-md-8">
-                                <input type="text" id="email" class="form-control" name="email">
+                                <input type="text" id="email" class="form-control" name="email" value="{{ old('email') }}">
                                 @error('email')
-                                <span class="form-error">{{$message}}</span>
+                                <span class="form-error">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row bottom-fix ">
                             <label for="phone" class="col-md-3 col-form-label text-md-right">Phone</label>
                             <div class="col-md-8">
-                                <input type="text" id="phone" class="form-control" name="phone">
+                                <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}">
                                 @error('phone')
-                                <span class="form-error">{{$message}}</span>
+                                <span class="form-error">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
@@ -57,16 +57,16 @@
                                     <option value="2">Female</option>
                                 </select>
                                 @error('gender')
-                                <span class="text-danger">{{$message}}</span>
+                                <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group row bottom-fix ">
                             <label for="address" class="col-md-3 col-form-label text-md-right">Address</label>
                             <div class="col-md-8">
-                                <input type="text" id="address" class="form-control" name="address">
+                                <input type="text" id="address" class="form-control" name="address" value="{{ old('address') }}">
                                 @error('address')
-                                <span class="form-error">{{$message}}</span>
+                                <span class="form-error">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
