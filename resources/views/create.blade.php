@@ -25,7 +25,7 @@
                         <div class="form-group row bottom-fix ">
                             <label for="username" class="col-md-3 col-form-label text-md-right">Username</label>
                             <div class="col-md-8">
-                                <input type="text" id="username" class="form-control" name="username" value="{{ old('username') }}">
+                                <input type="text" id="username" class="form-control" name="username" value="{{ old('$request->keyword') }}">
                                 @error('username')
                                 <span class="form-error">{{ $message }}</span>
                                 @enderror

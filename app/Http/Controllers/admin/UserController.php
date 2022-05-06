@@ -3,16 +3,24 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $users = User::paginate(5);
 
-        return view('list', compact('users'));
+        $keyword = $request->keyword;
+        if ($keyword) {
+            $users = User::where('username', 'like', "%".$request->keyword."%")
+                         ->orWhere('email', 'like', "%".$request->keyword."%")
+                         ->paginate(5);
+        }
+    
+        return view('list', compact('users','keyword'));
     }
 
     public function addUser()
