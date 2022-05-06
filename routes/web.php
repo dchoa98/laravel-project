@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('', [UserController::class,'index'])->name('users.index');
+Route::get('/', [UserController::class,'index'])->name('users.index');
 
-Route::get('users/add-user',[UserController::class,'addUser'])->name('users.add');
-Route::post('users/create-user',[UserController::class,'createUser'])->name('users.create');
+Route::prefix('users')->controller(UserController::class)->group(function () {
 
-Route::get('users/edit-user/{id}',[UserController::class,'editUser'])->name('users.edit');
-Route::put('users/update-user/{id}',[UserController::class,'updateUser'])->name('users.update');
+    Route::get('/', 'index')->name('users.index');
 
-Route::get('users/detail-user/{id}',[UserController::class,'detailUser'])->name('users.detail');
+    Route::get('add-user', 'addUser')->name('users.add');
+    Route::post('add-user', 'createUser')->name('users.create');
 
-Route::delete('users/delete-user/{id}',[UserController::class,'deleteUser'])->name('users.delete');
+    Route::get('edit-user/{id}', 'editUser')->name('users.edit');
+    Route::put('edit-user/{id}', 'updateUser')->name('users.update');
+
+    Route::get('detail-user/{id}', 'detailUser')->name('users.detail');
+    Route::delete('delete-user/{id}', 'deleteUser')->name('users.delete');
+});
+

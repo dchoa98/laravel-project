@@ -11,14 +11,14 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $users = User::paginate(5);
+        $users = new User();
 
         $keyword = $request->keyword;
         if ($keyword) {
-            $users = User::where('username', 'like', "%".$request->keyword."%")
-                         ->orWhere('email', 'like', "%".$request->keyword."%")
-                         ->paginate(5);
+            $users =  $users->where('username', 'like', "%".$request->keyword."%")
+                            ->orWhere('email', 'like', "%".$request->keyword."%");
         }
+        $users = $users->paginate(5)->appends($request->except('page'));
     
         return view('list', compact('users','keyword'));
     }
