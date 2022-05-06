@@ -52,12 +52,21 @@
                         <div class="form-group row bottom-fix ">
                             <label for="gender" class="col-md-3 col-form-label text-md-right">Gender</label>
                             <div class="col-md-8">
-                                <select name="gender" class="form-select">
+                                <select name="gender" class="form-select" id="gender">
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
                                 </select>
                                 @error('gender')
                                 <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row bottom-fix ">
+                            <label for="avatar" class="col-md-3 col-form-label text-md-right">Avatar</label>
+                            <div class="col-md-8">
+                                <input type="file" id="avatar" class="form-control" name="avatar" value="{{ old('avatar') }}">
+                                @error('avatar')
+                                <span class="form-error">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>

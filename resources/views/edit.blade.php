@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{route('users.index')}}"><h5>USER</h5></a>
+            <a class="navbar-brand" href="{{ route('users.index') }}"><h5>USER</h5></a>
         </div>
     </nav>
     <div class="cotainer form-fix">
@@ -20,10 +20,10 @@
             <div class="card">
                 <div class="card-header">Edit User</div>
                 <div class="card-body">
-            <form action="{{route('users.update',['id'=>$users->id])}}" method="POST" enctype="multipart/form-data" class="p-3">
-                @method('PUT')
-                @csrf
-                <div class="form-group row bottom-fix ">
+                    <form action="{{ route('users.update',['id'=>$users->id]) }}" method="POST" enctype="multipart/form-data" class="p-3">
+                    @method('PUT')
+                    @csrf
+                        <div class="form-group row bottom-fix ">
                             <label for="username" class="col-md-3 col-form-label text-md-right">Username</label>
                             <div class="col-md-8">
                                 <input type="text" id="username" class="form-control" name="username" value="{{$users->username}}">
@@ -63,6 +63,15 @@
                             </div>
                         </div>
                         <div class="form-group row bottom-fix ">
+                            <label for="avatar" class="col-md-3 col-form-label text-md-right">Avatar</label>
+                            <div class="col-md-8">
+                                <input type="file" id="avatar" class="form-control" name="avatar">
+                                @error('avatar')
+                                <span class="form-error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row bottom-fix ">
                             <label for="address" class="col-md-3 col-form-label text-md-right">Address</label>
                             <div class="col-md-8">
                                 <input type="text" id="address" class="form-control" name="address" value="{{$users->address}}">
@@ -71,14 +80,14 @@
                                 @enderror
                             </div>
                         </div>
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary" id="addForm">Lưu</button>
-                    <button type="reset" class="btn btn-danger" id="cancel">Reset</button>
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary" id="addForm">Save</button>
+                            <button type="reset" class="btn btn-danger" id="cancel">Reset</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

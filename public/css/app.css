@@ -55,3 +55,10 @@ label
 {
     text-align: right;
 }
+.avatar 
+{
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

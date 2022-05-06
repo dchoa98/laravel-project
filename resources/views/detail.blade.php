@@ -27,6 +27,7 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
+                                <th>Avatar</th>
                                 <th>Address</th>
                             </thead>
                             <tbody>
@@ -42,6 +43,7 @@
                                             Nữ
                                         @endif
                                     </td>
+                                    <td><img src="{{ asset('storage/' . $user->avatar) }}" class="avatar"></td>
                                     <td>{{ $user->address }}</td>
                                 </tr>
                             </tbody>

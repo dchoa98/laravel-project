@@ -25,4 +25,4 @@ Route::put('users/update-user/{id}',[UserController::class,'updateUser'])->name(
 
 Route::get('users/detail-user/{id}',[UserController::class,'detailUser'])->name('users.detail');
 
-Route::post('users/delete-user/{id}',[UserController::class,'deleteUser'])->name('users.delete');
+Route::delete('users/delete-user/{id}',[UserController::class,'deleteUser'])->name('users.delete');
