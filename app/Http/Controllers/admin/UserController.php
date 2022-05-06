@@ -31,19 +31,10 @@ class UserController extends Controller
 
     public function createUser(UserRequest $request)
     {
-        $users = new User();
-
-        $users->fill($request->all());
-        if($request->hasFile('avatar')) {
-            $newFileName = uniqid() . '-' . $request->avatar->getClientOriginalName();
-            $imagePath = $request->avatar->storeAs('public/uploads/users', $newFileName);
-            $users->avatar = str_replace('public/', '', $imagePath);
-        }
-        $users->save();
+        $this->insertOrUpdate($request);
 
         return redirect('/')->with(['message' => 'Create New Success']);
     }
-
     public function editUser($id)
     {
         $users = User::findOrFail($id);
@@ -53,7 +44,14 @@ class UserController extends Controller
     
     public function updateUser($id, UserRequest $request)
     {
-        $users = User::findOrFail($id);
+        $this->insertOrUpdate($request, $id);
+
+        return redirect('/')->with(['message' => 'Update Success']);
+    }
+
+    public function insertOrUpdate($request, $id = '')
+    {
+        $users = empty($id) ? new User() : User::findOrFail($id);
 
         $users->fill($request->all());
         if($request->hasFile('avatar')) {
@@ -61,9 +59,7 @@ class UserController extends Controller
             $imagePath = $request->avatar->storeAs('public/uploads/users', $newFileName);
             $users->avatar = str_replace('public/', '', $imagePath);
         }
-        $users->save();
-
-        return redirect('/')->with(['message' => 'Update Success']);
+        $users->save();       
     }
 
     public function detailUser($id)
@@ -72,7 +68,6 @@ class UserController extends Controller
 
         return view('detail', compact('user'));
     }
-
 
     public function deleteUser($id)
     {
